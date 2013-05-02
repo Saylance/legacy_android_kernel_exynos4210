@@ -63,16 +63,20 @@ typedef struct mali_dvfs_staycount{
 }mali_dvfs_staycount_table;
 
 mali_dvfs_staycount_table mali_dvfs_staycount[MALI_DVFS_STEPS]={
-		/*step 0*/{1},
-		/*step 1*/{1},
-		/*step 2*/{1} };
+	{1},	/*step 0*/
+	{1},	/*step 1*/
+	{1},	/*step 2*/
+	{0},	/*step 3*/
+};
 
 /*dvfs threshold*/
 mali_dvfs_threshold_table mali_dvfs_threshold[MALI_DVFS_STEPS]={
-		/*step 0*/{((int)((255*0)/100))   ,((int)((255*25)/100))},
-		/*step 1*/{((int)((255*14)/100))   ,((int)((255*40)/100))},
-		/*step 2*/{((int)((255*22)/100))  ,((int)((255*65)/100))},
-		/*step 3*/{((int)((255*43)/100))  ,((int)((255*100)/100))} };
+	/* {down_threshold, up_threshold} = int(2.55*percent) */
+	{0,   245},	/*step 0*/
+	{150, 245},	/*step 1*/
+	{145, 245},	/*step 2*/
+	{160, 255},	/*step 3*/
+};
 
 /*dvfs status*/
 mali_dvfs_currentstatus maliDvfsStatus;
@@ -80,11 +84,12 @@ int mali_dvfs_control=0;
 
 /*dvfs table*/
 mali_dvfs_table mali_dvfs[MALI_DVFS_STEPS]={
-			/* more pixels to push and bigger battery */
-			/*step 0*/{100  ,1000000    , 900000},
-			/*step 1*/{160  ,1000000    , 900000},
-			/*step 2*/{267  ,1000000    , 925000},
-			/*step 3*/{400  ,1000000    ,1050000} };
+	/* more pixels to push and bigger battery */
+	{100, 1000000,  900000},	/*step 0*/
+	{160, 1000000,  900000},	/*step 1*/
+	{267, 1000000,  925000},	/*step 2*/
+	{400, 1000000, 1050000},	/*step 3*/
+};
 
 #ifdef EXYNOS4_ASV_ENABLED
 
