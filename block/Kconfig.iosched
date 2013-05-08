@@ -94,7 +94,7 @@ choice
 		bool "V(R)" if IOSCHED_VR=y
 
 	config DEFAULT_NOOP
-		bool "No-op"
+		bool "No-op" if IOSCHED_NOOP=y
 
 endchoice
 
