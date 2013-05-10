@@ -368,17 +368,16 @@ LINUXINCLUDE    := -I$(srctree)/arch/$(hdr-arch)/include \
 
 KBUILD_CPPFLAGS := -D__KERNEL__
 
-KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
-		   -fno-strict-aliasing -fno-common \
+KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-format-security \
 		   -Werror-implicit-function-declaration \
-		   -Wno-format-security \
-		   -fno-delete-null-pointer-checks \
-                -mtune=cortex-a9 -mfpu=neon \
-                -pipe
+		   -fno-strict-aliasing -fno-common -fno-delete-null-pointer-checks \
+		   -mtune=cortex-a9 -mfpu=neon -march=armv7-a \
+		   --sysroot=/home/kernel/android-ndk-r8e/platforms/android-14/arch-arm \
+		   -pipe
 
-                #-funswitch-loops -fpredictive-commoning \
-                #-fgcse-after-reload -fipa-cp-clone \
-                #-fmodulo-sched -fmodulo-sched-allow-regmoves \
+		   # -funswitch-loops -fpredictive-commoning \
+		   # -fgcse-after-reload -fipa-cp-clone \
+		   # -fmodulo-sched -fmodulo-sched-allow-regmoves \
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
