@@ -5,12 +5,14 @@
 #include <linux/seq_file.h>
 #include <linux/utsname.h>
 
+extern char *show_asv(void);
 static int version_proc_show(struct seq_file *m, void *v)
 {
 	seq_printf(m, linux_proc_banner,
 		utsname()->sysname,
 		utsname()->release,
 		utsname()->version);
+	seq_printf(m, "%s",show_asv());
 	return 0;
 }
 
