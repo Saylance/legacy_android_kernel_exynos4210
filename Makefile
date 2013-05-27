@@ -370,7 +370,7 @@ LINUXINCLUDE    := -I$(srctree)/arch/$(hdr-arch)/include \
 
 KBUILD_CPPFLAGS := -D__KERNEL__
 
-KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-format-security \
+KBUILD_CFLAGS   := -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-format-security \
 		   -Werror-implicit-function-declaration \
 		   -fno-strict-aliasing -fno-common -fno-delete-null-pointer-checks -fno-pic \
 		   -march=armv7-a -mfloat-abi=softfp -mtune=cortex-a9 -mfpu=neon -march=armv7-a \

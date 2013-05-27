@@ -397,7 +397,7 @@ static unsigned int asv_v;
 extern int get_exynos4_temp(void); 
 #endif
 #ifdef CONFIG_SEC_THERMISTOR
-extern int u1_adc_temp_getvalue();
+extern int u1_adc_temp_getvalue(void);
 #endif
 
 //collect CPU and temp info, by PHJZ @ xda, modified by G.Lewarne @ xda
